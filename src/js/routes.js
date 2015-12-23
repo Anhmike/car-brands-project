@@ -27,7 +27,7 @@ var routes = (
             <Route path="brands/edit" component={EditBrand}>
                 <Route path=":id" component={EditBrand}/>
             </Route>
-            <Route path="new-brand" component={AddBrand}/>
+            <Route path="add-brand" component={AddBrand}/>
             <Route path="contacts" component={Contacts}/>
             <Route path="*" component={NoMatch}/>
         </Route>

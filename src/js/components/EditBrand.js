@@ -31,6 +31,7 @@ var EditBrand = React.createClass({
                 this.setState({
                     brand: currentBrand.name,
                     logo: currentBrand.logo,
+                    thumbnail: currentBrand.logo,
                     description: currentBrand.description
                 });
             }
@@ -156,7 +157,7 @@ var EditBrand = React.createClass({
                                             onChange={that.handleLogoInput}/>
                                     </div>
                                     <div className="form-group">
-                                        <img src={that.state.thumbnail} className="img-responsive hidden" id="thumbnail"/>
+                                        <img src={that.state.thumbnail} className="img-responsive" id="thumbnail"/>
                                         <div className="input-error">{that.state.errors.logo}</div>
                                     </div>
                                     <div className="form-group">
@@ -171,7 +172,7 @@ var EditBrand = React.createClass({
                                         <div className="input-error">{that.state.errors.description}</div>
                                     </div>
                                     <div className="form-group">
-                                        <button className="btn btn-warning btn-lg">Add Brand</button>
+                                        <button className="btn btn-warning btn-lg">Edit Brand</button>
                                     </div>
                                 </form>
                             </Panel>

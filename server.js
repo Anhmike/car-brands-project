@@ -35,7 +35,7 @@ app.get('/brands', function(req, res) {
     res.render('index', {});
 });
 
-app.get('/new-brand', function(req, res) {
+app.get('/add-brand', function(req, res) {
     res.render('index', {});
 });
 

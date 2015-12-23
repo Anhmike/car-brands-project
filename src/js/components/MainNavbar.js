@@ -21,7 +21,7 @@ var MainNavbar = React.createClass({
                 <Navbar.Collapse>
                     <Nav>
                         <NavItem eventKey={1} href="/brands">Brands</NavItem>
-                        <NavItem eventKey={2} href="/new-brand">Add Brand</NavItem>
+                        <NavItem eventKey={2} href="/add-brand">Add Brand</NavItem>
                     </Nav>
                     <Nav pullRight>
                         <NavItem eventKey={1} href="/contacts">Contacts</NavItem>
