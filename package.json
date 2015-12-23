@@ -1,0 +1,49 @@
+{
+  "name": "brands",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Savcho Stamenov",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^12.0.1",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^1.1.1",
+    "gulp-html-replace": "^1.5.4",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-nodemon": "^2.0.4",
+    "gulp-react": "^3.1.0",
+    "gulp-sass": "^2.1.0",
+    "gulp-streamify": "^1.0.2",
+    "gulp-uglify": "^1.5.1",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.6.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "bootstrap": "^3.3.5",
+    "ejs": "^2.3.4",
+    "es6-promise": "^3.0.2",
+    "express": "^4.13.3",
+    "flux": "^2.1.1",
+    "guid": "0.0.12",
+    "gulp-concat": "^2.6.0",
+    "history": "1.13.1",
+    "jquery": "^2.1.4",
+    "lodash": "^3.10.1",
+    "mongodb": "^2.0.48",
+    "mongoose": "^4.2.6",
+    "object-assign": "^4.0.1",
+    "react": "^0.14.2",
+    "react-bootstrap": "^0.28.1",
+    "react-dom": "^0.14.2",
+    "react-router": "^1.0.0",
+    "serve-favicon": "^2.3.0",
+    "sweetalert": "^1.1.3",
+    "toastr": "^2.1.2"
+  }
+}

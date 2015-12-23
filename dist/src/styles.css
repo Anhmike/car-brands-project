@@ -1,0 +1,62 @@
+body {
+  background: #2A2447 !important;
+  font-family: 'Open Sans', sans-serif !important; }
+
+.bkgr-navbar {
+  background: #12110F;
+  color: #fff; }
+  .bkgr-navbar a {
+    color: #fff !important; }
+  .bkgr-navbar ul.dropdown-menu a {
+    color: #000 !important; }
+
+.site-main-container > div {
+  background-color: #e8e8e8;
+  border-right: 1px solid #000;
+  border-left: 1px solid #000; }
+
+.vertical-padding {
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+.horizontal-padding {
+  padding-right: 10px;
+  padding-left: 10px; }
+
+.margin-bottom {
+  margin-bottom: 20px; }
+
+.remove-padding-bottom {
+  margin-top: -40px; }
+
+.full-height {
+  min-height: 92.6vh;
+  height: 100%; }
+
+.custom-padding {
+  padding: 10px; }
+
+.main-logo {
+  min-height: 300px;
+  background-image: url("./../../img/car.jpg");
+  background-size: 100% 100%; }
+
+.panel {
+  background: #b2b2b2 !important;
+  color: #fff; }
+
+.glyphicon-remove, .glyphicon-pencil {
+  float: right;
+  margin-left: 15px;
+  font-size: 0.8em;
+  color: #bf0303; }
+  .glyphicon-remove:hover, .glyphicon-pencil:hover {
+    color: #fff; }
+
+.input-error {
+  margin-top: 5px;
+  color: #bf0303; }
+
+@-moz-document url-prefix() {
+  .img-responsive {
+    display: inline !important; } }
