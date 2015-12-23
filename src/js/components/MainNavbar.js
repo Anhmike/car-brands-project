@@ -20,12 +20,11 @@ var MainNavbar = React.createClass({
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
-                        <NavItem eventKey={1} href="http://localhost:9876/brands">Brands</NavItem>
-                        <NavItem eventKey={2} href="http://localhost:9876/new-brand">Add Brand</NavItem>
+                        <NavItem eventKey={1} href="brands">Brands</NavItem>
+                        <NavItem eventKey={2} href="new-brand">Add Brand</NavItem>
                     </Nav>
                     <Nav pullRight>
-                        <NavItem eventKey={1} href="#">Contacts</NavItem>
-                        <NavItem eventKey={2} href="#">F.A.Q.</NavItem>
+                        <NavItem eventKey={1} href="contacts">Contacts</NavItem>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

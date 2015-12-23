@@ -39,6 +39,10 @@ app.get('/new-brand', function(req, res) {
     res.render('index', {});
 });
 
+app.get('/contacts', function(req, res) {
+    res.render('index', {});
+});
+
 app.get('/brands/:id', function(req, res) {
     res.render('index', {});
 });
