@@ -17,7 +17,6 @@ db.once('open', function (callback) {
 
 var Car = db.model('Car');
 
-app.set('port', (9876));
 app.set('views', __dirname + '/dist/views');
 app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
@@ -93,7 +92,7 @@ app.use(function(req, res){
     res.status(404).render('index');
 });
 
-app.listen(app.get('port'), function() {
-    console.log('Server started: http://localhost:' + app.get('port') + '/');
+app.listen(process.env.PORT || 9876, function() {
+    console.log('Server started: http://localhost:' + process.env.PORT || 9876 + '/');
 });
 
