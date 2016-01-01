@@ -8,6 +8,7 @@
     "npm": "2.14.3"
   },
   "scripts": {
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Savcho Stamenov",
