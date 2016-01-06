@@ -36,6 +36,12 @@ var Actions = {
                 car: data
             });
         });
+    },
+    loginUser: function(user) {
+        Dispatcher.dispatch({
+            actionType: actionTypes.USER_LOGGED_IN,
+            user: user
+        });
     }
 };
 

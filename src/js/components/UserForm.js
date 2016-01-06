@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react');
+var Actions = require('./../actions/actions');
 var Panel = require('react-bootstrap').Panel;
 var RestApi = require('./../routes/cars');
 
@@ -29,8 +30,8 @@ var UserForm = React.createClass({
             password: this.state.password
         }).then(function(user) {
             console.log(user);
-        })
-            .catch(function(err) {
+            Actions.loginUser(user);
+        }).catch(function(err) {
             console.log('Error logging in', err);
         });
     },

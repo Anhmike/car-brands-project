@@ -65,7 +65,12 @@ app.post('/users/login', function(req, res) {
         password: req.body.password
     }).exec(function (err, user) {
         if (err) return console.error(err);
-        res.send(user);
+
+        if (user.length > 0) {
+            var authCode = Math.floor(Math.random() * (1000 - 1)) + 1;
+            user[0].authCode = authCode;
+            res.send(user);
+        }
     });
 });
 
