@@ -45,5 +45,17 @@ module.exports = {
                 error: error
             });
         });
+    },
+    login: function(data) {
+        return new Promise(function(success, error) {
+            $.ajax({
+                url: 'users/login',
+                dataType: 'json',
+                type: 'POST',
+                data: data,
+                success: success,
+                error: error
+            });
+        });
     }
 };

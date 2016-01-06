@@ -2,21 +2,37 @@
 
 var React = require('react');
 var Panel = require('react-bootstrap').Panel;
+var RestApi = require('./../routes/cars');
 
 var UserForm = React.createClass({
     getInitialState: function () {
       return {
-          input: ''
+          username: '',
+          password: ''
       }
     },
     handleInputUsername: function (e) {
         this.setState({
-            input: e.target.value
+            username: e.target.value
+        });
+    },
+    handleInputPassword: function (e) {
+        this.setState({
+            password: e.target.value
         });
     },
     userLogin: function (e) {
         e.preventDefault();
-        console.log('Logging', this.state.username);
+
+        RestApi.login({
+            username: this.state.username,
+            password: this.state.password
+        }).then(function(user) {
+            console.log(user);
+        })
+            .catch(function(err) {
+            console.log('Error logging in', err);
+        });
     },
     render: function () {
         return (

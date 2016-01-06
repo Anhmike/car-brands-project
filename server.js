@@ -7,15 +7,17 @@ var favicon = require('serve-favicon');
 var app = express();
 var mongoose = require('mongoose');
 require('./src/js/models/car');
+require('./src/js/models/user');
 var db = mongoose.createConnection('mongodb://admin:topgun333@ds055574.mongolab.com:55574/initialdb');
 
 db.on('error', console.error.bind(console, 'connection error'));
 
-db.once('open', function (callback) {
+db.once('open', function () {
     console.info('DB connected');
 });
 
 var Car = db.model('Car');
+var User = db.model('User');
 
 app.set('views', __dirname + '/dist/views');
 app.engine('ejs', require('ejs').renderFile);
@@ -57,6 +59,16 @@ app.get('/api/brands', function(req, res) {
     });
 });
 
+app.post('/users/login', function(req, res) {
+    User.find({
+        username: req.body.username,
+        password: req.body.password
+    }).exec(function (err, user) {
+        if (err) return console.error(err);
+        res.send(user);
+    });
+});
+
 app.post('/api/brands', function(req, res) {
     var brand = new Car(req.body);
 
@@ -93,6 +105,6 @@ app.use(function(req, res){
 });
 
 app.listen(process.env.PORT || 9876, function() {
-    console.log('Server started: http://localhost:' + process.env.PORT || 9876 + '/');
+    console.log('Server started: http://localhost:' + (process.env.PORT || 9876) + '/');
 });
 
