@@ -42,6 +42,11 @@ var Actions = {
             actionType: actionTypes.USER_LOGGED_IN,
             user: user
         });
+    },
+    logoutUser: function() {
+        Dispatcher.dispatch({
+            actionType: actionTypes.USER_LOGGED_OUT
+        });
     }
 };
 

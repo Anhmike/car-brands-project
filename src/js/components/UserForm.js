@@ -29,44 +29,63 @@ var UserForm = React.createClass({
             username: this.state.username,
             password: this.state.password
         }).then(function(user) {
-            console.log(user);
             Actions.loginUser(user);
         }).catch(function(err) {
             console.log('Error logging in', err);
         });
     },
+    logoutUser: function(e) {
+        e.preventDefault();
+
+        Actions.logoutUser();
+    },
     render: function () {
-        return (
-            <div className="col-md-4 vertical-padding">
-                <Panel>
-                    <form className="form-horizontal horizontal-padding" onSubmit={this.userLogin}>
-                        <div className="form-group">
-                            <label htmlFor="username">Username:</label>
-                            <input
-                                type="text"
-                                value={this.state.username}
-                                className="form-control"
-                                id="username"
-                                placeholder="Your username..."
-                                onChange={this.handleInputUsername}/>
+        if (this.props.loggedUser && this.props.loggedUser.username) {
+            return (
+                <div className="col-md-4 vertical-padding">
+                    <Panel>
+                        <div>
+                            Welcome, {this.props.loggedUser.username}
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="password">Password:</label>
-                            <input
-                                type="password"
-                                value={this.state.password}
-                                className="form-control"
-                                id="password"
-                                placeholder="Your password..."
-                                onChange={this.handleInputPassword}/>
+                        <div>
+                            <a href="#" onClick={this.logoutUser}>Logout</a>
                         </div>
-                        <div className="form-group">
-                            <button className="btn btn-warning btn-block">Login</button>
-                        </div>
-                    </form>
-                </Panel>
-            </div>
-        )
+                    </Panel>
+                </div>
+            )
+        } else {
+            return (
+                <div className="col-md-4 vertical-padding">
+                    <Panel>
+                        <form className="form-horizontal horizontal-padding" onSubmit={this.userLogin}>
+                            <div className="form-group">
+                                <label htmlFor="username">Username:</label>
+                                <input
+                                    type="text"
+                                    value={this.state.username}
+                                    className="form-control"
+                                    id="username"
+                                    placeholder="Your username..."
+                                    onChange={this.handleInputUsername}/>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="password">Password:</label>
+                                <input
+                                    type="password"
+                                    value={this.state.password}
+                                    className="form-control"
+                                    id="password"
+                                    placeholder="Your password..."
+                                    onChange={this.handleInputPassword}/>
+                            </div>
+                            <div className="form-group">
+                                <button className="btn btn-warning btn-block">Login</button>
+                            </div>
+                        </form>
+                    </Panel>
+                </div>
+            )
+        }
     }
 });
 

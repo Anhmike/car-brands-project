@@ -123,7 +123,7 @@ var EditBrand = React.createClass({
             logo: this.state.logo
         });
 
-        toastr.success('Brand successfuly added!');
+        toastr.success('Brand successfuly editted!');
         this.history.pushState(null, '/brands');
     },
     render: function () {

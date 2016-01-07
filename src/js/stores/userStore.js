@@ -32,6 +32,10 @@ Dispatcher.register(function(action) {
             localStorage.setItem('user', JSON.stringify(action.user[0]));
             usersStore.emitChange();
             break;
+        case ActionTypes.USER_LOGGED_OUT:
+            localStorage.removeItem('user');
+            usersStore.emitChange();
+            break;
     }
 });
 

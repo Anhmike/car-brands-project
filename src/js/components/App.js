@@ -47,10 +47,9 @@ var App = React.createClass({
                         </div>
                         <div className="custom-padding clearfix">
                             <div className="col-md-8 vertical-padding">
-                                {this.state.loggedUser ? <p>{this.state.loggedUser.username} is logged in</p> : ''}
                                 {React.cloneElement(this.props.children, {data: this.state.data, loggedUser: this.state.loggedUser})}
                             </div>
-                            <UserForm />
+                            <UserForm loggedUser={this.state.loggedUser} />
                         </div>
                     </div>
                 </div>
