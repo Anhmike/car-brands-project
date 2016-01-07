@@ -3,13 +3,10 @@
 var React = require('react');
 var $ = require('jquery');
 var _ = require('lodash');
-var Link = require('react-router').Link;
 var Actions = require('./../actions/actions');
 var RestApi = require('./../routes/cars');
-var CarStore = require('./../stores/carStore');
 var Panel = require('react-bootstrap').Panel;
 var History = require('react-router').History;
-var swal = require('sweetalert');
 var toastr = require('toastr');
 
 var EditBrand = React.createClass({

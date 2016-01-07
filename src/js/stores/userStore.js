@@ -18,8 +18,10 @@ var usersStore = assign({}, EventEmitter.prototype, {
         this.emit(CHANGE_EVENT);
     },
     getUser: function() {
-        if (localStorage.getItem('user')) {
-            return JSON.parse(localStorage.getItem('user'));
+        var _user = localStorage.getItem('user');
+
+        if (_user && _user !== 'undefined') {
+            return JSON.parse(_user);
         }
 
         return null;

@@ -4,6 +4,7 @@ var React = require('react');
 var Actions = require('./../actions/actions');
 var Panel = require('react-bootstrap').Panel;
 var RestApi = require('./../routes/cars');
+var toastr = require('toastr');
 
 var UserForm = React.createClass({
     getInitialState: function () {
@@ -29,7 +30,11 @@ var UserForm = React.createClass({
             username: this.state.username,
             password: this.state.password
         }).then(function(user) {
-            Actions.loginUser(user);
+            if (user.length === 0) {
+                toastr.error('Wrong user/password')
+            } else {
+                Actions.loginUser(user);
+            }
         }).catch(function(err) {
             console.log('Error logging in', err);
         });
