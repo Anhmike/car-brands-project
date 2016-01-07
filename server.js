@@ -40,6 +40,13 @@ app.get('/add-brand', function(req, res) {
     res.render('index', {});
 });
 
+app.get('/api/brands', function(req, res) {
+    Car.find({}).exec(function (err, cars) {
+        if (err) return console.error(err);
+        res.send(cars);
+    });
+});
+
 app.get('/contacts', function(req, res) {
     res.render('index', {});
 });
@@ -57,6 +64,10 @@ app.get('/api/brands', function(req, res) {
         if (err) return console.error(err);
         res.send(cars);
     });
+});
+
+app.get('/register', function(req, res) {
+    res.render('index', {});
 });
 
 app.post('/users/login', function(req, res) {

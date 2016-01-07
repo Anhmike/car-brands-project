@@ -2,7 +2,7 @@
 
 var React = require('react');
 var Panel = require('react-bootstrap').Panel;
-var UserForm = require('./UserForm');
+var UserForm = require('./forms/UserForm');
 
 var MainPage = React.createClass({
     render: function () {

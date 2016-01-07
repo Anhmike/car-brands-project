@@ -47,6 +47,12 @@ var Actions = {
         Dispatcher.dispatch({
             actionType: actionTypes.USER_LOGGED_OUT
         });
+    },
+    registerUser: function(user) {
+        Dispatcher.dispatch({
+            actionType: actionTypes.USER_REGISTERED,
+            user: user
+        });
     }
 };
 

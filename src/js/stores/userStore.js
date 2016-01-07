@@ -38,6 +38,10 @@ Dispatcher.register(function(action) {
             localStorage.removeItem('user');
             usersStore.emitChange();
             break;
+        case ActionTypes.USER_REGISTERED:
+            localStorage.setItem('user', JSON.stringify(action.user));
+            usersStore.emitChange();
+            break;
     }
 });
 

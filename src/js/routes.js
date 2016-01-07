@@ -13,6 +13,7 @@ var MainPage = require('./components/MainPage');
 var Brands = require('./components/Brands');
 var AddBrand = require('./components/AddBrand');
 var EditBrand = require('./components/EditBrand');
+var Register = require('./components/Register');
 var Contacts = require('./components/Contacts');
 var NoMatch = require('./components/NoMatch');
 var MainFooter = require('./components/MainFooter');
@@ -28,6 +29,7 @@ var routes = (
                 <Route path=":id" component={EditBrand}/>
             </Route>
             <Route path="add-brand" component={AddBrand}/>
+            <Route path="register" component={Register}/>
             <Route path="contacts" component={Contacts}/>
             <Route path="*" component={NoMatch}/>
         </Route>
