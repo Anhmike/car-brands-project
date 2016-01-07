@@ -41,8 +41,16 @@ var Brand = React.createClass({
                             <Panel>
                                 <h1>
                                     {car.name}
-                                    <a href="#" onClick={that.deleteBrand.bind(that, car._id)}><span className="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-                                    <Link to={"/brands/edit/" + car._id}><span className="glyphicon glyphicon-pencil" aria-hidden="true"></span></Link>
+                                    {function(){
+                                        if (that.props.loggedUser && that.props.loggedUser.username) {
+                                            return (
+                                                <span>
+                                                    <a href="#" onClick={that.deleteBrand.bind(that, car._id)}><span className="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                                                    <Link to={"/brands/edit/" + car._id}><span className="glyphicon glyphicon-pencil" aria-hidden="true"></span></Link>
+                                                </span>
+                                            );
+                                        }
+                                    }.call(that)}
                                 </h1>
                                 <img src={car.logo} className="img-responsive" alt="logo"/>
                                 <p>{car.description}</p>

@@ -16,21 +16,25 @@ var App = React.createClass({
         }
     },
     componentWillMount: function () {
-        CarStore.addChangeListener(this._onChange);
-        UserStore.addChangeListener(this._onChange);
+        CarStore.addChangeListener(this._onChangeData);
+        UserStore.addChangeListener(this._onChangeUser);
     },
     componentWillUnmount: function () {
-        CarStore.removeChangeListener(this._onChange);
-        UserStore.removeChangeListener(this._onChange);
+        CarStore.removeChangeListener(this._onChangeData);
+        UserStore.removeChangeListener(this._onChangeUser);
     },
     componentDidMount: function () {
         Actions.getAllCars();
     },
-    _onChange: function () {
+    _onChangeData: function () {
       this.setState({
-          data: CarStore.getAllCars(),
-          loggedUser: UserStore.getUser().username
+          data: CarStore.getAllCars()
       });
+    },
+    _onChangeUser: function () {
+        this.setState({
+            loggedUser: UserStore.getUser()
+        });
     },
     render: function () {
         return (
@@ -43,8 +47,8 @@ var App = React.createClass({
                         </div>
                         <div className="custom-padding clearfix">
                             <div className="col-md-8 vertical-padding">
-                                <p>{this.state.loggedUser} is logged in</p>
-                                {React.cloneElement(this.props.children, {data: this.state.data})}
+                                {this.state.loggedUser ? <p>{this.state.loggedUser.username} is logged in</p> : ''}
+                                {React.cloneElement(this.props.children, {data: this.state.data, loggedUser: this.state.loggedUser})}
                             </div>
                             <UserForm />
                         </div>

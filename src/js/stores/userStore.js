@@ -7,9 +7,6 @@ var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 var CHANGE_EVENT = 'change';
 
-var _user = null,
-    _authCode = null;
-
 var usersStore = assign({}, EventEmitter.prototype, {
     addChangeListener: function(callback) {
         this.on(CHANGE_EVENT, callback);
@@ -21,14 +18,18 @@ var usersStore = assign({}, EventEmitter.prototype, {
         this.emit(CHANGE_EVENT);
     },
     getUser: function() {
-        return _user;
+        if (localStorage.getItem('user')) {
+            return JSON.parse(localStorage.getItem('user'));
+        }
+
+        return null;
     }
 });
 
 Dispatcher.register(function(action) {
     switch(action.actionType) {
         case ActionTypes.USER_LOGGED_IN:
-            _user = action.user[0];
+            localStorage.setItem('user', JSON.stringify(action.user[0]));
             usersStore.emitChange();
             break;
     }

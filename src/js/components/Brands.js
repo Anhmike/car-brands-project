@@ -8,11 +8,11 @@ var Brands = React.createClass({
     render: function () {
         if (this.props.params.id) {
             return (
-                <Brand data={this.props.data} id={this.props.params.id}/>
+                <Brand data={this.props.data} loggedUser={this.props.loggedUser} id={this.props.params.id}/>
             )
         } else {
             return (
-                <AllBrands data={this.props.data} id={this.props.params.id}/>
+                <AllBrands data={this.props.data} loggedUser={this.props.loggedUser} id={this.props.params.id}/>
             )
         }
     }
