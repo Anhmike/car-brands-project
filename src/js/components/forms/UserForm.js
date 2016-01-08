@@ -44,6 +44,10 @@ var UserForm = React.createClass({
         e.preventDefault();
 
         Actions.logoutUser();
+        this.setState({
+            username: '',
+            password: ''
+        });
     },
     render: function () {
         if (this.props.loggedUser && this.props.loggedUser.username) {

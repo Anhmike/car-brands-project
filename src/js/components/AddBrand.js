@@ -97,6 +97,11 @@ var AddBrand = React.createClass({
             return;
         }
 
+        if (!this.props.loggedUser) {
+            toastr.error('You must be logged in to add a brand!');
+            return;
+        }
+
         Actions.createCar({
             name: this.state.brand,
             description: this.state.description,
