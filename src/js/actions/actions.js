@@ -49,9 +49,11 @@ var Actions = {
         });
     },
     registerUser: function(user) {
-        Dispatcher.dispatch({
-            actionType: actionTypes.USER_REGISTERED,
-            user: user
+        RestApi.post('/api/user', user).then(function(data) {
+            Dispatcher.dispatch({
+                actionType: actionTypes.USER_REGISTERED,
+                user: data
+            });
         });
     }
 };

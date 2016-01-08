@@ -113,6 +113,11 @@ var EditBrand = React.createClass({
             return;
         }
 
+        if (!this.props.loggedUser) {
+            toastr.error('You must be logged in to edit a brand!');
+            return;
+        }
+
         Actions.editCar({
             _id: this.props.params.id,
             name: this.state.brand,
@@ -120,7 +125,7 @@ var EditBrand = React.createClass({
             logo: this.state.logo
         });
 
-        toastr.success('Brand successfuly editted!');
+        toastr.success('Brand successfully edited!');
         this.history.pushState(null, '/brands');
     },
     render: function () {

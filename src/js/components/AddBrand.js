@@ -103,7 +103,7 @@ var AddBrand = React.createClass({
             logo: this.state.logo
         });
 
-        toastr.success('Brand successfuly added!');
+        toastr.success('Brand successfully added!');
         this.history.pushState(null, '/brands');
     },
     render: function () {

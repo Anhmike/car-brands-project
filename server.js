@@ -84,6 +84,15 @@ app.post('/users/login', function(req, res) {
     });
 });
 
+app.post('/api/user', function(req, res) {
+    var user = new User(req.body);
+
+    user.save(function (err, user) {
+        if (err) return console.error(err);
+        res.send(user);
+    });
+});
+
 app.post('/api/brands', function(req, res) {
     var brand = new Car(req.body);
 
