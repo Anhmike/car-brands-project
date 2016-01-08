@@ -84,6 +84,13 @@ app.post('/users/login', function(req, res) {
     });
 });
 
+app.get('/api/all-users', function(req, res) {
+    User.find({}).exec(function (err, users) {
+        if (err) return console.error(err);
+        res.send(users);
+    });
+});
+
 app.post('/api/user', function(req, res) {
     var user = new User(req.body);
 

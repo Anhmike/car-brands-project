@@ -1,7 +1,9 @@
 'use strict';
 
 var React = require('react');
+var _ = require('lodash');
 var Actions = require('./../actions/actions');
+var RestApi = require('./../routes/cars');
 var History = require('react-router').History;
 var Panel = require('react-bootstrap').Panel;
 var toastr = require('toastr');
@@ -32,19 +34,43 @@ var Register = React.createClass({
     },
     registerUser: function (e) {
         e.preventDefault();
+        var that = this,
+            currentUser,
+            isUserExisting,
+            i,
+            a,
+            checkIfUserExists = function (users) {
+                for (i = 0, a = users.length; i < a; i++) {
+                    currentUser = users[i];
 
-        if (this.state.password !== this.state.retypedPassword) {
-            toastr.error('Passwords do not match!');
-            return;
-        }
+                    if (currentUser.username === that.state.username) {
+                        isUserExisting = true;
+                        break;
+                    }
+                }
 
-        Actions.registerUser({
-            username: this.state.username,
-            password: this.state.password
+                return isUserExisting;
+            };
+
+        RestApi.get('/api/all-users').then(function(users) {
+            if (checkIfUserExists(users)) {
+                toastr.error('Username already exists!');
+                return;
+            }
+
+            if (that.state.password !== that.state.retypedPassword) {
+                toastr.error('Passwords do not match!');
+                return;
+            }
+
+            Actions.registerUser({
+                username: that.state.username,
+                password: that.state.password
+            });
+
+            that.history.pushState(null, '/');
+            toastr.success('You have successfully registered!');
         });
-
-        this.history.pushState(null, '/');
-        toastr.success('You have successfully registered!');
     },
     render: function () {
         return (
@@ -65,7 +91,7 @@ var Register = React.createClass({
                         <div className="form-group">
                             <label htmlFor="password">Password:</label>
                             <input
-                                type="text"
+                                type="password"
                                 value={this.state.password}
                                 className="form-control"
                                 id="password"
@@ -75,7 +101,7 @@ var Register = React.createClass({
                         <div className="form-group">
                             <label htmlFor="retypedPassword">Confirm password:</label>
                             <input
-                                type="text"
+                                type="password"
                                 value={this.state.retypedPassword}
                                 className="form-control"
                                 id="retypedPassword"
