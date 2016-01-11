@@ -38,6 +38,7 @@
     "gulp-concat": "^2.6.0",
     "history": "1.17.0",
     "jquery": "^2.1.4",
+    "jsonwebtoken": "^5.5.4",
     "lodash": "^3.10.1",
     "mongodb": "^2.0.48",
     "mongoose": "^4.2.6",

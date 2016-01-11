@@ -3,6 +3,7 @@
 var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
+var jwt = require('jsonwebtoken');
 var favicon = require('serve-favicon');
 var app = express();
 var mongoose = require('mongoose');
@@ -71,13 +72,16 @@ app.get('/register', function(req, res) {
 });
 
 app.post('/users/login', function(req, res) {
+    var token;
+
     User.find({
         username: req.body.username,
         password: req.body.password
     }).exec(function (err, user) {
         if (user.length > 0) {
-            var authCode = Math.floor(Math.random() * (1000 - 1)) + 1;
-            user[0].authCode = authCode;
+            user.exp = 1372674336;
+            token = jwt.sign(user[0], 'test');
+            user[0].token = token;
         }
 
         res.send(user);
@@ -92,10 +96,14 @@ app.get('/api/all-users', function(req, res) {
 });
 
 app.post('/api/user', function(req, res) {
-    var user = new User(req.body);
+    var user = new User(req.body),
+        token;
 
     user.save(function (err, user) {
         if (err) return console.error(err);
+        user.exp = 1372674336;
+        token = jwt.sign(user, 'test');
+        user.token = token;
         res.send(user);
     });
 });
