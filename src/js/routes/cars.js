@@ -49,7 +49,7 @@ module.exports = {
     login: function(data) {
         return new Promise(function(success, error) {
             $.ajax({
-                url: '/users/login',
+                url: '/api/users/login',
                 dataType: 'json',
                 type: 'POST',
                 data: data,

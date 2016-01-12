@@ -31,7 +31,7 @@ var usersStore = assign({}, EventEmitter.prototype, {
 Dispatcher.register(function(action) {
     switch(action.actionType) {
         case ActionTypes.USER_LOGGED_IN:
-            localStorage.setItem('user', JSON.stringify(action.user[0]));
+            localStorage.setItem('user', JSON.stringify(action.user));
             usersStore.emitChange();
             break;
         case ActionTypes.USER_LOGGED_OUT:

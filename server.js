@@ -20,6 +20,13 @@ db.once('open', function () {
 var Car = db.model('Car');
 var User = db.model('User');
 
+var setExpirationDate = function () {
+    var currentDate = new Date();
+
+    return currentDate.setHours(currentDate.getHours() + 7);
+};
+
+app.set('secret', 'my4Little55Secret');
 app.set('views', __dirname + '/dist/views');
 app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
@@ -29,15 +36,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname));
 app.use(favicon(__dirname + '/img/favicon.ico'));
 
-app.get('/', function(req, res) {
-    res.render('index', {});
-});
-
-app.get('/brands', function(req, res) {
-    res.render('index', {});
-});
-
-app.get('/add-brand', function(req, res) {
+app.get(/^(?!\/api).+/, function(req, res) {
     res.render('index', {});
 });
 
@@ -48,39 +47,18 @@ app.get('/api/brands', function(req, res) {
     });
 });
 
-app.get('/contacts', function(req, res) {
-    res.render('index', {});
-});
-
-app.get('/brands/:id', function(req, res) {
-    res.render('index', {});
-});
-
-app.get('/brands/edit/:id', function(req, res) {
-    res.render('index', {});
-});
-
-app.get('/api/brands', function(req, res) {
-    Car.find({}).exec(function (err, cars) {
-        if (err) return console.error(err);
-        res.send(cars);
-    });
-});
-
-app.get('/register', function(req, res) {
-    res.render('index', {});
-});
-
-app.post('/users/login', function(req, res) {
+app.post('/api/users/login', function(req, res) {
     var token;
 
     User.find({
         username: req.body.username,
         password: req.body.password
     }).exec(function (err, user) {
+        if (err) return console.error(err);
+
         if (user.length > 0) {
-            user.exp = 1372674336;
-            token = jwt.sign(user[0], 'test');
+            user[0].exp = setExpirationDate();
+            token = jwt.sign(user[0], app.get('secret'));
             user[0].token = token;
         }
 
@@ -101,8 +79,8 @@ app.post('/api/user', function(req, res) {
 
     user.save(function (err, user) {
         if (err) return console.error(err);
-        user.exp = 1372674336;
-        token = jwt.sign(user, 'test');
+        user.exp = setExpirationDate();
+        token = jwt.sign(user, app.get('secret'));
         user.token = token;
         res.send(user);
     });

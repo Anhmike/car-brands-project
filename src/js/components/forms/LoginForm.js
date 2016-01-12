@@ -34,7 +34,7 @@ var LoginForm = React.createClass({
             if (user.length === 0) {
                 toastr.error('Wrong user/password')
             } else {
-                Actions.loginUser(user);
+                Actions.loginUser(user[0]);
             }
         }).catch(function(err) {
             console.log('Error logging in', err);
